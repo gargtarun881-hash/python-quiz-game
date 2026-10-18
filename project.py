@@ -1,3 +1,11 @@
+QUESTIONS = [
+    ("What is the capital of France?","paris"),
+    ("What keyword stops a loop?", "break"),
+    ("What function gives the length of a list?","len"),
+    ("What does .lower() do to text?","lowercase"),
+    ("How many minutes are in an hour?","60"),
+]
+
 def check_answer(i,j):
     if i == j:
         return True
@@ -11,7 +19,7 @@ def count(i , j):
     return score
 
 def percentage(total):
-    percent = round((total/5)*100)
+    percent = round((total/len(QUESTIONS))*100)
     return percent
 
 def message(x):
@@ -29,13 +37,11 @@ def message(x):
         return f"Excellent!! You got highest. Here is my bow to you 🙌"
 
 def main() :
-    a = input("What is the capital of France? ").strip().lower()
-    b = input("What keyword stops a loop? ").lower().strip()
-    c = input("What function gives the length of a list? ").lower().strip()
-    d = input("What does .lower() do to text? ").lower().strip()
-    e = input("How many minutes are in an hour? ").lower().strip()
     total = 0
-    total = total + count(e , "60") + count(d , "lowercase") + count(c , "len") + count(b , "break") + count(a , "paris")
+    for question, answer in QUESTIONS:
+        reply = input(question + " ").strip().lower()
+        total = total + count(reply, answer)
+
     x = percentage(total)
     print(f"{x}%")
     print(message(x))
