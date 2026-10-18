@@ -23,18 +23,18 @@ def percentage(total):
     return percent
 
 def message(x):
-    if x == 0:
-        return f"Too bad! There is plenty of room for improvement 😅"
-    elif x == 20:
-        return f"Not Bad! But you can improve a lot. Keep Practicing 😄"
-    elif x == 40:
-        return f"Good! You are way ahead. Better Luck Next Time 🤟"
-    elif x == 60:
-        return f"Yo! Well Done ! you are just a small step away from perfection 🤛  "
-    elif x == 80:
-        return f"Very Good! You are definitely winning on your very next try , Keep it up 😇 "
-    elif x == 100:
+    if x >= 100:
         return f"Excellent!! You got highest. Here is my bow to you 🙌"
+    elif x >= 80:
+        return f"Very Good! You are definitely winning on your very next try , Keep it up 😇"
+    elif x >= 60:
+        return f"Yo! Well Done ! you are just a small step away from perfection 🤛"
+    elif x >= 40:
+        return f"Good! You are way ahead. Better Luck Next Time 🤟"
+    elif x >= 20:
+        return f"Not Bad! But you can improve a lot. Keep Practicing 😄"
+    else:
+        return f"Too bad! There is plenty of room for improvement 😅"
 
 def main() :
     total = 0

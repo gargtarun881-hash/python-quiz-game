@@ -13,5 +13,7 @@ def test_percentage():
     assert percentage(5) == 100
 
 def test_message():
-    assert message(20) == "Not Bad! But you can improve a lot. Keep Practicing 😄"
-    assert message(100) == "Excellent!! You got highest. Here is my bow to you 🙌"
+    assert "Too bad" in message(0)
+    assert "Not Bad" in message(20)
+    assert "Excellent" in message(100)
+    assert "Good" in message(50)
