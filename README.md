@@ -28,9 +28,9 @@ Answers are cleaned with `.strip()` and `.lower()`, so capital letters and extra
 
 `count(i, j)` uses `check_answer`. It returns 1 for a correct answer and 0 for a wrong one, so the points can be added up.
 
-`percentage(total)` takes the number of correct answers out of five and returns the score as a whole number from 0 to 100, rounded with `round()`.
+`percentage(total)` takes the number of correct answers out of questions present in QUESTIONS and returns the score as a whole number from 0 to 100, rounded with `round()`.
 
-`message(x)` takes the percentage and returns a message for it. There is a different message for 0, 20, 40, 60, 80 and 100, which are the only scores possible with five questions.
+`message(x)` takes the percentage and returns a message for it. `message` works for any percent.
 
 ## How to run it
 Start the quiz:
@@ -42,8 +42,8 @@ Run the tests:
     pytest test_project.py
 
 ## Design choices
-I kept all the input and questions are asked in a loop over that list and I made every other function take values in and return a value. A function like that is easy to test, because a test can call it with fixed values and check the answer. If `check_answer` asked for input itself, the tests would stop and wait for someone to type.
+I kept all the input and printing inside main(). The questions are asked in a loop over the QUESTIONS list. I made every other function take values in and return a value. A function like that is easy to test, because a test can call it with fixed values and check the answer. If `check_answer` asked for input itself, the tests would stop and wait for someone to type.
 
 I split the work into small functions so that each one does one job. That made the code easier to read, and it made it easier to find a bug when a test failed. The tests cover a right answer, a wrong answer, the lowest and highest scores, and the messages.
 
-The project has a limit. `percentage` divides by the number of questions in the QUESTIONS list , and `message` only covers scores that are multiples of 20. If I add more questions, both functions will need to change.
+The project has a limit. `percentage` gets the number of questions by reading the `QUESTIONS` list from outside the function, instead of receiving it as an argument. This makes it harder to test with different numbers of questions.
