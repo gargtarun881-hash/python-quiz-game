@@ -1,4 +1,7 @@
 # Python Basics Quiz
+## Demo
+![Quiz Running](demo.png)
+![Tests Passing](tests.png)
 
 ## What it does
 This is a small command-line quiz game written in Python. When you run it, it asks five questions about Python basics, one at a time. You type an answer for each one. At the end, the program adds up how many answers were right, turns that into a percentage, and prints the percentage with a short message. The message changes with the score, from encouraging for a low score to celebratory for a perfect one.
