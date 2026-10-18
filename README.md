@@ -42,8 +42,8 @@ Run the tests:
     pytest test_project.py
 
 ## Design choices
-I kept all the input and printing inside `main()`, and I made every other function take values in and return a value. A function like that is easy to test, because a test can call it with fixed values and check the answer. If `check_answer` asked for input itself, the tests would stop and wait for someone to type.
+I kept all the input and questions are asked in a loop over that list and I made every other function take values in and return a value. A function like that is easy to test, because a test can call it with fixed values and check the answer. If `check_answer` asked for input itself, the tests would stop and wait for someone to type.
 
 I split the work into small functions so that each one does one job. That made the code easier to read, and it made it easier to find a bug when a test failed. The tests cover a right answer, a wrong answer, the lowest and highest scores, and the messages.
 
-The project has a limit. `percentage` divides by 5 because the quiz has five questions, and `message` only covers scores that are multiples of 20. If I add more questions, both functions will need to change.
+The project has a limit. `percentage` divides by the number of questions in the QUESTIONS list , and `message` only covers scores that are multiples of 20. If I add more questions, both functions will need to change.
