@@ -2,7 +2,7 @@
 
 ## Demo
 ![Quiz running](demo.png)
-![Tests passing](test.png)
+![Tests passing](tests.png)
 
 ## What it does
 This is a small command-line quiz game written in Python. It reads a bank of questions from a file called `questions.csv` and picks 5 of them at random each time you run it. It asks them one at a time, and you type an answer for each one. At the end, the program counts the right answers, turns that into a percentage, and prints the percentage with a short message. The message changes with the score, from encouraging for a low score to celebratory for a perfect one.
