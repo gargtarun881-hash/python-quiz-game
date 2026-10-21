@@ -1,5 +1,6 @@
 import csv
 import sys
+import random
 def load_questions(filename):
     questions = []
     with open(filename) as file :
@@ -8,6 +9,8 @@ def load_questions(filename):
             questions.append((row["question"],row["answer"]))
     return questions
 
+def pick_questions(qs , n):
+    return random.sample(qs , min(n,len(qs)))
 
 
 def check_answer(i,j):
@@ -44,9 +47,9 @@ def message(x):
 
 def main() :
     try:
-        questions = load_questions("questions.csv")
+        questions = pick_questions(load_questions("questions.csv") , 5 )
         total = 0
-        for question, answer in load_questions("questions.csv"):
+        for question, answer in questions:
             reply = input(question + " ").strip().lower()
             total = total + count(reply, answer)
 
