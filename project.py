@@ -45,6 +45,19 @@ def message(x):
     else:
         return f"Too bad! There is plenty of room for improvement 😅"
 
+def read_best(filename):
+    try:
+        with open(filename) as file:
+            return int(file.read())
+
+    except (ValueError,FileNotFoundError):
+        return 0
+
+def save_best(filename,score):
+    with open(filename,"w") as file:
+        file.write(str(score))
+
+
 def main() :
     try:
         questions = pick_questions(load_questions("questions.csv") , 5 )
@@ -52,10 +65,17 @@ def main() :
         for question, answer in questions:
             reply = input(question + " ").strip().lower()
             total = total + count(reply, answer)
-
         x = percentage(total , len(questions) )
         print(f"{x}%")
         print(message(x))
+        best = read_best("best_score.txt")
+
+        if x > best :
+            save_best("best_score.txt", x)
+            print(f"New best score! {x}%")
+
+        else :
+            print(f"Best score: {best}%")
     except FileNotFoundError:
         sys.exit("File not found")
 if __name__ == "__main__":

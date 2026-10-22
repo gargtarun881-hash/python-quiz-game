@@ -1,5 +1,5 @@
 import pytest
-from project import check_answer , count , percentage , message , load_questions , pick_questions
+from project import check_answer , count , percentage , message , load_questions , pick_questions , read_best , save_best
 
 def test_check_answer():
     assert check_answer("paris","paris") == True
@@ -22,7 +22,7 @@ def test_message():
     assert "Too bad" in message(0)
     assert "Not Bad" in message(20)
     assert "Excellent" in message(100)
-    assert "Good" in message(50)
+    assert "way ahead" in message(50)
 
 def test_load_questions(tmp_path):
     f = tmp_path / "q.csv"
@@ -41,3 +41,17 @@ def test_pick_questions():
     assert len(picked1) == 4
     for item in picked :
         assert item in q
+
+def test_read_best_missing(tmp_path):
+    f = tmp_path / "best.txt"
+    assert read_best(str(f)) == 0
+
+def test_read_best_bad_file(tmp_path):
+    f = tmp_path / "best.txt"
+    f.write_text("abc")
+    assert read_best(str(f)) == 0
+
+def test_save_and_read_best(tmp_path):
+    f = tmp_path / "best.txt"
+    save_best(str(f), 80)
+    assert read_best(str(f)) == 80
